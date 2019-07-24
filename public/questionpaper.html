@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Question Papers</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top mx-2" alt="logo">CUCSE Notes
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>  
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="questionpaper.html">Question Papers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="upload.html">Upload</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Notes</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="gate.html">GATE</a>
+                        <a class="dropdown-item" href="course_notes.html">Course Subjects</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">New Technologies</a>
+                        <a class="dropdown-item" href="#">Miscellaneous</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="books.html">Books</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <div class="row  d-flex justify-content-center" style="padding:25px">
+        <form class="form-inline" id="searchform">
+            <input type="number" name="year" id="year" class="form-control mx-3 my-2" placeholder="Enter Year" required>
+            <input type="text" name="sub" id="sub" class="form-control mx-3 my-2" placeholder = "Enter Subject Code" required>
+            <input type="submit" name="submit" id="submit" class="form-control btn btn-primary mx-3 my-2"value="Get Question Paper">
+        </form>
+    </div>
+    <div class="row  d-flex justify-content-center my-1 " id="pdf-container">
+        <object class="view" id="container"type="application/pdf" width="65%" height="520px" view="Fit"> 
+            <p>It appears you don't have a PDF plugin for this browser.
+             No biggie... you can <a href="" id="lnk">click here to download the PDF file.</a></p>  
+        </object>
+    </div>
+    <script src="js/firebase-app.js"></script>
+    <script src="js/firebase-storage.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/pdf.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+</body>
+</html>

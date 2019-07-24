@@ -1,0 +1,97 @@
+
+a:hover,a:focus{
+    text-decoration: none;
+    outline: none;
+}
+#accordion{
+    padding-left: 80px;
+    width:80vw;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+#accordion:before{
+    content: "";
+    width: 5px;
+    height: 90%;
+    background:#fff;
+    position: absolute;
+    top: 0;
+    left: 22px;
+    z-index: -1;
+}
+#accordion .panel{
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin-bottom: 15px;
+}
+#accordion .panel-heading{
+    padding: 0;
+    border: none;
+    border-radius: 0;
+}
+#accordion .panel-title a{
+    display: block;
+    padding: 10px 30px 15px 0;
+    background: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    color: #004e89;
+    position: relative;
+    transition: all 0.5s ease 0s;
+}
+#accordion .panel-title a:before{
+    content: "\f068";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    width: 50px;
+    height: 50px;
+    line-height: 40px;
+    border-radius: 50%;
+    background: #cad5c2;
+    text-align: center;
+    font-size: 17px;
+    color: #004e89;
+    border: 6px solid #004e89;
+    position: absolute;
+    top: 0;
+    left: -80px;
+}
+#accordion .panel-title a.collapsed:before{
+    content: "\f067";
+    background: #fff;
+}
+#accordion .panel-body{
+    width:70vw;
+    padding: 15px 15px;
+    line-height: 25px;
+}
+.view{
+    display:flex;
+    flex:1;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.panel{
+    width:70vw;
+}
+ul{
+    list-style-type: none;
+}
+li
+{
+    font-size: 15px;
+    font-weight: 500;
+}
+li:hover{
+    color:blue;
+}
+@media only screen and (max-width: 600px) {
+    #accordion .panel-body{
+        width:60vw;
+        padding: 15px 15px;
+        line-height: 25px;
+    }
+  }
