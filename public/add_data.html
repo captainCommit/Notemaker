@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Course Data Addition</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="#">
+                    <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top mx-2" alt="logo">CUCSE Notes
+                </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>  
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link" href="questionpaper.html">Question Papers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="upload.html">Upload</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Notes</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="gate.html">GATE</a>
+                            <a class="dropdown-item" href="course_notes.html">Course Subjects</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">New Technologies</a>
+                            <a class="dropdown-item" href="#">Miscellaneous</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="books.html">Books</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+        <div class="main">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-6">
+                    <form class="form d-flex justify-content-center" id="msform">
+                        <fieldset>
+                            <input type="text" name="name" id="name" class="form-control mr-3 my-3" placeholder="Your Name">
+                            <input type="email" name="email" id="email" class="form-control mr-3 my-3" placeholder="Your Email">
+                            <select name="sub" id="sub" class="form-control mr-3 my-3">
+                                    <option value="phy1">Physics - I</option>
+                                    <option value="che1">Chemistry - I</option>
+                                    <option value="math1">Mathematics - I</option>
+                                    <option value="cs">Computer Science</option>
+                                    <option value="eng">Communicative English</option>
+                                    <option value="ee">Electrical Enginerring </option>
+                                    <option value="phy2">Physics - II</option>
+                                    <option value="che2">Chemistry - II</option>
+                                    <option value="math2">Mathematics - II</option>
+                                    <option value="ele">Electronics</option>
+                                    <option value="em">Engineering Mechanics</option>
+                                    <option value="soc">Sociology</option>
+                                    <option value="dl">Digital Logic</option>
+                                    <option value="ds">Data Structures</option>
+                                    <option value="dm">Discrete Mathematics</option>
+                                    <option value="evs">Environmental Science</option>
+                                    <option value="mp">Microprocessors</option>
+                                    <option value="pds">Probability And Stochastic Processes</option>
+                                    <option value="co">Computer Organization</option>
+                                    <option value="daa">Design And Analysis Of Algorithms</option>
+                                    <option value="os">Operating Systems</option>
+                                    <option value="sip">Social Issues And Professional Responsibilites</option>
+                                    <option value="cn">Computer Networks</option>
+                                    <option value="ot">Optimization Techniques</option>
+                                    <option value="se">Software Engineering</option>
+                                    <option value="dbms">DBMS</option>
+                                    <option value="ca">Advanced Computer Architecture</option>
+                                    <option value="dis">Distributed Systems</option>
+                                    <option value="it">Internet Technology</option>
+                                    <option value="cg">Computer Graphics</option>
+                                    <option value="flat">Formal Languages And Automata Theory</option>
+                                    <option value="IED">Industrial Entrepreneurship Development</option>
+                                    <option value="agt">Algorithmic Graph Theory</option>
+                                    <option value="cd">Compiler Design</option>
+                                    <option value="ai">Artificial Intelligence</option>
+                                    <option value="dsp">Digital Signal Processing</option>
+                                    <option value="wsn">Wireless Sensor Networks</option>
+                                    <option value="ids">Introduction To Data Science</option>
+                            </select>
+                            <select name="type" id="data_type" class="form-control mr-3 my-3" >
+                                <option value="link">Provide Link to Notes</option>
+                                <option value="up">Upload Notes</option>
+                            </select>
+                            <input type="text" name="link" id="link" class="form-control mr-3 my-3" placeholder="Please Provide Link">
+                            <input type="file" name="doc" id="doc" class="form-control mr-3 my-3" >
+                            <input type="submit" value="Submit data" id="submit" class="btn btn-primary form-control mr-3 my-3">
+                            </fieldset>
+                    </form>
+                </div>
+            </div> 
+        </div>
+    <script src="js/firebase-app.js"></script>
+    <script src="js/firebase-database.js"></script>
+    <script src="js/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Upload Area</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <div class="main">
+        <form id="msform">
+            <div class="row  d-flex justify-content-center">
+                <div class="col-md-6">
+                    <fieldset>
+                        <h2 class="fs-title">Upload Form</h2>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Your Email Id" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <input type="file" name="doc" id="doc" class="form-control" accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" multiple required>
+                            </div>
+                        </div>
+                        <input type="submit" name="submit" id="submit" class="action-button" value="Upload!!" />
+                    </fieldset>
+                </div>
+            </div>
+        </form>
+        <div class="row d-flex justify-content-center">
+            <progress value="0" max="100" id="uploader">0%</progress> 
+        </div>
+    </div>
+    <script src="js/firebase-app.js"></script>
+    <script src="js/firebase-database.js"></script>
+    <script src="js/firebase-storage.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="js/common.js"></script>
+</body>
+</html>
