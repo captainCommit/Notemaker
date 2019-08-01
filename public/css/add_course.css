@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+/*basic reset*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+    font-family: montserrat, arial, verdana;
+    background: transparent;
+}
+.profid{
+    visibility: hidden;
+}
+.logout{
+    visibility: hidden;
+    cursor: pointer;
+}
+.logout:hover{
+    color:blue;
+}
+
+/*form styles*/
+#msform {
+    text-align: center;
+    position: relative;
+    margin-top: 30px;
+}
+
+#msform form {
+    background: white;
+    border: 0 none;
+    border-radius: 0px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px 30px;
+    box-sizing: border-box;
+    width: 80%;
+    margin: 0 10%;
+
+    /*stacking forms above each other*/
+    position: relative;
+}
+
+/*Hide all except first form*/
+#msform form:not(:first-of-type) {
+    display: none;
+}

@@ -6,59 +6,13 @@
     margin: 0;
     padding: 0;
 }
+
 html {
     height: 100%;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    overflow-x:hidden;
 }
-body{
-    overflow-x:hidden;
-}
-.view{
-    border: solid black 1.5px;
-}
-tr{
-    padding:5px;
-}
-a{
-    text-decoration: none;
-}
-ul{
-    list-style-type: none;
-}
-.cont{
-    display: flex;
-    flex:1;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.thumbnail{
-    border:1.5px solid black;
-}
-ol{
-    list-style-type: none;
-}
-.pdfobject-container{
-    width:90%;
-    border:solid black 1.5px;
-    height:100px;
-}
+
 body {
     background: transparent;
-    font-size: 1em;
-}
-#uploader{
-    -webkit-appearance: none;
-    appearance: none;
-    margin:10px;
-    width:50%;
-
-}
-.hidden{
-   visibility: hidden;
 }
 
 /*form styles*/
@@ -66,19 +20,15 @@ body {
     font-family: montserrat, arial, verdana;
     text-align: center;
     position: relative;
-    margin-top: 25px;
-    margin-bottom: 30px;
+    margin-top: 30px;
 }
 
 #msform fieldset {
-    background: rgb(236, 236, 236);
+    background: white;
     border: 0 none;
     border-radius: 0px;
     box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
-    padding-top: 20px;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-bottom: 2px;
+    padding: 20px 30px;
     box-sizing: border-box;
     width: 80%;
     margin: 0 10%;
@@ -91,11 +41,19 @@ body {
 #msform fieldset:not(:first-of-type) {
     display: none;
 }
-.footer{
-    bottom: 0;
-}
-/*inputs*/
 
+/*inputs*/
+#msform input, #msform textarea {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: montserrat;
+    color: #2C3E50;
+    font-size: 13px;
+}
 
 #msform input:focus, #msform textarea:focus {
     -moz-box-shadow: none !important;
@@ -128,7 +86,7 @@ body {
 
 #msform .action-button-previous {
     width: 100px;
-    background: rgb(97, 97, 248);
+    background: #C5C5F1;
     font-weight: bold;
     color: white;
     border: 0 none;
