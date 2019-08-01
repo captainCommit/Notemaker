@@ -25,14 +25,20 @@
                 <li class="nav-item">
                         <a class="nav-link" href="questionpaper.html">Question Papers</a>
                 </a></li>
-                <li class="nav-item">
-                    <a class="nav-link" href="upload.html">Upload</a>
-                </a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Uploads</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="upload.html">Miscellaneous Uploads</a>
+                            <a class="dropdown-item" href="common.html">Bulk Upload</a>
+                            <a class="dropdown-item" href="add_data.html">Course Notes</a>
+                        </div>
+                    </a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Notes</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="gate.html">GATE</a>
-                        <a class="dropdown-item" href="course_notes.html">Course Subjects</a>
+                        <a class="dropdown-item" href="course_notes.html">Course Notess</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">New Technologies</a>
                         <a class="dropdown-item" href="#">Miscellaneous</a>
@@ -40,6 +46,9 @@
                 </a></li>
                 <li class="nav-item">
                     <a class="nav-link " href="books.html">Books</a>
+                </a></li>
+                <li class="nav-item">
+                    <a class="nav-link " href="courses.html">Courses</a>
                 </a></li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -78,9 +87,10 @@
                                                 <option value="em">Engineering Mechanics</option>
                                                 <option value="soc">Sociology</option>
                                             </select>
-                                            <input type="submit" id="submit" class="form-control btn btn-primary mx-3" name="submit" value="Get Resources !!!">
+                                            <input type="submit" id="submit-1" class="form-control btn btn-primary mx-3" name="submit" value="Get Resources !!!">
+                                            <div class="my-3" id="filler1"></div>
                                         </form>
-                                        <div class="holder" id="filler"></div>
+                                            
                                     </div>
                                 </div>
                             </div>
@@ -108,9 +118,9 @@
                                             <option value="os">Operating Systems</option>
                                             <option value="sip">Social Issues And Professional Responsibilites</option>
                                         </select>
-                                       <input type="submit" id="submit" class="form-control btn btn-primary mx-3" name="submit" value="Get Resources !!!">
+                                       <input type="submit" id="submit-2" class="form-control btn btn-primary mx-3" name="submit" value="Get Resources !!!">
+                                       <div class="my-3" id="filler2"></div>
                                     </form>
-                                    <div class="holder" id="filler"></div>
                                 </div>
                             </div>
                         </div>
@@ -135,11 +145,11 @@
                                         <option value="it">Internet Technology</option>
                                         <option value="cg">Computer Graphics</option>
                                         <option value="flat">Formal Languages And Automata Theory</option>
-                                        <option value="IED">Industrial Entrepreneurship Development</option>
+                                        <option value="ied">Industrial Entrepreneurship Development</option>
                                         </select>
-                                        <input type="submit" id="submit" class="form-control btn btn-primary mx-3" name="submit" value="Get Resources !!!">
+                                        <input type="submit" id="submit-3" class="form-control btn btn-primary mx-3" name="submit" value="Get Resources !!!">
+                                        <div class="my-3" id="filler3"></div>
                                     </form>
-                                    <div class="holder" id="filler"></div>
                                 </div>
                             </div>
                         </div>
@@ -161,18 +171,23 @@
                                             <option value="dsp">Digital Signal Processing</option>
                                             <option value="wsn">Wireless Sensor Networks</option>
                                             <option value="ids">Introduction To Data Science</option>
-                                            <input type="submit" id="submit" class="form-control btn btn-primary mx-3" name="submit" value="Get Resources !!!">
                                         </select>
+                                        <input type="submit" id="submit-4" class="form-control btn btn-primary mx-3" name="submit" value="Get Resources !!!">
+                                        <div class="my-3" id="filler4"></div>
                                     </form>
                                 </div>
-                                <div class="holder" id="filler"></div>
+                                <div class="holder" id="filler4"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    <script src="js/firebase-app.js"></script>
+    <script src="/__/firebase/6.3.3/firebase-app.js"></script>
+    <script src="/__/firebase/6.3.3/firebase-database.js"></script>
+    <script src="/__/firebase/6.3.3/firebase-storage.js"></script>
+    <script src="/__/firebase/6.3.3/firebase-firestore.js"></script>
+    <script src="/__/firebase/init.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/notes.js"></script>

@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
-            <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top mx-2" alt="logo">CUCSE Notes
-        </a>
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">
+                <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top mx-2" alt="logo">CUCSE Notes
+            </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>  
@@ -20,26 +20,35 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                </li>
+                </a></li>
                 <li class="nav-item">
-                    <a class="nav-link" href="questionpaper.html">Question Papers</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="upload.html">Upload</a>
+                        <a class="nav-link" href="questionpaper.html">Question Papers</a>
+                </a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Uploads</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="upload.html">Miscellaneous Uploads</a>
+                            <a class="dropdown-item" href="common.html">Bulk Upload</a>
+                            <a class="dropdown-item" href="add_data.html">Course Notes</a>
+                        </div>
+                    </a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Notes</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="gate.html">GATE</a>
-                        <a class="dropdown-item" href="course_notes.html">Course Subjects</a>
+                        <a class="dropdown-item" href="course_notes.html">Course Notess</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">New Technologies</a>
                         <a class="dropdown-item" href="#">Miscellaneous</a>
                     </div>
-                </li>
+                </a></li>
                 <li class="nav-item">
                     <a class="nav-link " href="books.html">Books</a>
-                </li>
+                </a></li>
+                <li class="nav-item">
+                    <a class="nav-link " href="courses.html">Courses</a>
+                </a></li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -60,8 +69,11 @@
              No biggie... you can <a href="" id="lnk">click here to download the PDF file.</a></p>  
         </object>
     </div>
-    <script src="js/firebase-app.js"></script>
-    <script src="js/firebase-storage.js"></script>
+    <script src="/__/firebase/6.3.3/firebase-app.js"></script>
+    <script src="/__/firebase/6.3.3/firebase-database.js"></script>
+    <script src="/__/firebase/6.3.3/firebase-storage.js"></script>
+    <script src="/__/firebase/6.3.3/firebase-firestore.js"></script>
+    <script src="/__/firebase/init.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/pdf.js"></script>

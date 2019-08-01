@@ -10,51 +10,60 @@
 </head>
 <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="#">
-                    <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top mx-2" alt="logo">CUCSE Notes
-                </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>  
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                            <a class="nav-link" href="questionpaper.html">Question Papers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="upload.html">Upload</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Notes</a>
+            <a class="navbar-brand" href="#">
+                <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top mx-2" alt="logo">CUCSE Notes
+            </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>  
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </a></li>
+                <li class="nav-item">
+                        <a class="nav-link" href="questionpaper.html">Question Papers</a>
+                </a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Uploads</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="gate.html">GATE</a>
-                            <a class="dropdown-item" href="course_notes.html">Course Subjects</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">New Technologies</a>
-                            <a class="dropdown-item" href="#">Miscellaneous</a>
+                            <a class="dropdown-item" href="upload.html">Miscellaneous Uploads</a>
+                            <a class="dropdown-item" href="common.html">Bulk Upload</a>
+                            <a class="dropdown-item" href="add_data.html">Course Notes</a>
                         </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="books.html">Books</a>
-                    </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-            </div>
-        </nav>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Notes</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="gate.html">GATE</a>
+                        <a class="dropdown-item" href="course_notes.html">Course Notess</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">New Technologies</a>
+                        <a class="dropdown-item" href="#">Miscellaneous</a>
+                    </div>
+                </a></li>
+                <li class="nav-item">
+                    <a class="nav-link " href="books.html">Books</a>
+                </a></li>
+                <li class="nav-item">
+                    <a class="nav-link " href="courses.html">Courses</a>
+                </a></li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
         <div class="main">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-6">
                     <form class="form d-flex justify-content-center" id="msform">
                         <fieldset>
-                            <input type="text" name="name" id="name" class="form-control mr-3 my-3" placeholder="Your Name">
-                            <input type="email" name="email" id="email" class="form-control mr-3 my-3" placeholder="Your Email">
-                            <select name="sub" id="sub" class="form-control mr-3 my-3">
+                            <input type="text" name="name" id="name" class="form-control mr-3 my-3" placeholder="Your Name" required>
+                            <input type="email" name="email" id="email" class="form-control mr-3 my-3" placeholder="Your Email" required>
+                            <select name="sub" id="sub" class="form-control mr-3 my-3" required>
                                     <option value="phy1">Physics - I</option>
                                     <option value="che1">Chemistry - I</option>
                                     <option value="math1">Mathematics - I</option>
@@ -86,7 +95,7 @@
                                     <option value="it">Internet Technology</option>
                                     <option value="cg">Computer Graphics</option>
                                     <option value="flat">Formal Languages And Automata Theory</option>
-                                    <option value="IED">Industrial Entrepreneurship Development</option>
+                                    <option value="ied">Industrial Entrepreneurship Development</option>
                                     <option value="agt">Algorithmic Graph Theory</option>
                                     <option value="cd">Compiler Design</option>
                                     <option value="ai">Artificial Intelligence</option>
@@ -94,22 +103,23 @@
                                     <option value="wsn">Wireless Sensor Networks</option>
                                     <option value="ids">Introduction To Data Science</option>
                             </select>
-                            <select name="type" id="data_type" class="form-control mr-3 my-3" >
+                            <select name="type" id="data_type" class="form-control mr-3 my-3" required>
                                 <option value="link">Provide Link to Notes</option>
                                 <option value="up">Upload Notes</option>
                             </select>
-                            <input type="text" name="link" id="link" class="form-control mr-3 my-3" placeholder="Please Provide Link">
-                            <input type="file" name="doc" id="doc" class="form-control mr-3 my-3" >
+                            <input type="text" name="link" id="link" class="form-control mr-3 my-3" placeholder="Please Provide Link" required>
+                            <input type="file" name="doc" id="doc" class="form-control mr-3 my-3" required>
                             <input type="submit" value="Submit data" id="submit" class="btn btn-primary form-control mr-3 my-3">
                             </fieldset>
                     </form>
                 </div>
             </div> 
         </div>
-    <script src="js/firebase-app.js"></script>
-    <script src="js/firebase-database.js"></script>
-    <script src="js/firebase-storage.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+    <script src="/__/firebase/6.3.3/firebase-app.js"></script>
+    <script src="/__/firebase/6.3.3/firebase-database.js"></script>
+    <script src="/__/firebase/6.3.3/firebase-storage.js"></script>
+    <script src="/__/firebase/6.3.3/firebase-firestore.js"></script>
+    <script src="/__/firebase/init.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/index.js"></script>

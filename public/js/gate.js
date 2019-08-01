@@ -1,15 +1,3 @@
-const firebaseConfig = {
-    apiKey: "AIzaSyAdZao6GBCsDtUhHxQPqfSUpE6GFA22HBc",
-    authDomain: "notemaker-1729.firebaseapp.com",
-    databaseURL: "https://notemaker-1729.firebaseio.com",
-    projectId: "notemaker-1729",
-    storageBucket: "notemaker-1729.appspot.com",
-    messagingSenderId: "438852777543",
-    appId: "1:438852777543:web:dc5b4257fbe773d6"
-  };
-  
-firebase.initializeApp(firebaseConfig)
-  
 const storage = firebase.storage();
 var sub = document.getElementById('sub')
 

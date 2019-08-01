@@ -1,16 +1,3 @@
-const firebaseConfig = {
-  apiKey: "AIzaSyAdZao6GBCsDtUhHxQPqfSUpE6GFA22HBc",
-  authDomain: "notemaker-1729.firebaseapp.com",
-  databaseURL: "https://notemaker-1729.firebaseio.com",
-  projectId: "notemaker-1729",
-  storageBucket: "notemaker-1729.appspot.com",
-  messagingSenderId: "438852777543",
-  appId: "1:438852777543:web:dc5b4257fbe773d6"
-};
-/* Firebase Initialization */
-
-
-firebase.initializeApp(firebaseConfig)
 const storage = firebase.storage()
 const database = firebase.database()
 const firestore = firebase.firestore()
@@ -100,4 +87,144 @@ msform.addEventListener('submit',async (e)=>{
         await dRef.push(uploadObj)
         console.log('Done')
     }
+    else if(arr.length == 0)
+    {
+      await  firestore.collection("Subjects").doc(Sub).set({
+            subname : Sub,
+            sub_year : getyear(Sub),
+            resources : [uploadObj.link_to_resource]
+        })
+      await dRef.push(uploadObj)
+      console.log("Done")
+    }
+    else
+    {
+        alert("Error in Query ")
+    }
 })
+
+function getyear(subname)
+{
+    year = 0 
+    switch(subname)
+    {
+      case  "phy1":
+        year = 1
+        break
+      case  "che1":
+        year = 1
+        break
+      case  "math1":
+        year = 1
+        break
+      case  "cs":
+        year = 1
+        break
+      case  "eng":
+        year = 1
+        break
+      case  "ee":
+        year = 1
+        break
+      case  "phy2":
+        year = 1
+        break
+      case  "che2":
+        year = 1
+        break
+      case  "math2":
+        year = 1
+        break
+      case  "ele":
+        year = 1
+        break
+      case  "em":
+        year = 1
+        break
+      case  "soc":
+        year = 1
+        break
+      case  "dl":
+        year =2
+        break
+      case  "ds":
+        year =2
+        break
+      case  "dm":
+        year =2
+        break
+      case  "evs":
+        year =2
+        break
+      case  "mp":
+        year =2
+        break
+      case  "pds":
+        year = 2
+        break
+      case  "co":
+        year = 2
+        break
+      case  "daa":
+        year = 2
+        break
+      case  "os":
+        year = 2
+        break
+      case  "sip":
+        year = 2
+        break
+      case  "cn":
+        year =3
+        break
+      case  "ot":
+        year =3
+        break
+      case  "se":
+        year =3
+        break
+      case  "dbms":
+        year =3
+        break
+      case  "ca":
+        year =3
+        break
+      case  "dis":
+        year = 3
+        break
+      case  "it":
+        year = 3
+        break
+      case  "cg":
+        year = 3
+        break
+      case  "flat":
+        year = 3
+        break
+      case  "ied":
+        year = 3
+        break
+      case  "agt":
+        year = 4
+        break
+      case  "cd":
+        year = 4
+        break
+      case  "ai":
+        year = 4
+        break
+      case  "dsp":
+        year = 4
+        break
+      case  "wsn":
+        year = 4
+        break
+      case  "ids":
+        year = 4
+        break
+      default:
+        year =0
+        break
+    }
+    return year
+}
