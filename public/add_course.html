@@ -6,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Add Course</title>
     <link rel="stylesheet" href="css/add_course.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
-<body>
+<body onload="checkAuthState()">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
             <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top mx-2" alt="logo">CUCSE Notes
@@ -49,6 +50,9 @@
                 <li class="nav-item">
                     <a class="nav-link " href="courses.html">Courses</a>
                 </a></li>
+                <li class="nav-item">
+                    <a class="nav-link " href="add_course.html">Add Courses</a>
+                </a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right text-white">
                 <li class="nav-item profid mx-3" id="profid">Hello <span id="name">Prof- name</span></li>
@@ -56,47 +60,148 @@
             </ul>
         </div>
     </nav>
-    <div class="row d-flex justify-content-center">
+    <div class="row d-flex justify-content-center main">
         <div class="col-md-6 ">
             <div id="msform" class="text-center">
                 <form class="form" id="login-form">
-                    <h4 class="heading">Log In</h4>
-                    <input type="email" name="email" class="form-control  my-3" id="emailid" placeholder="Enter Email ID"/>
-                    <input type="password" name="password" id="password  my-3" class="form-control"placeholder="Enter Password"/>
-                    <input type="submit" name="submit" id="submitbtn" class="btn btn-success mt-3" value="Sign In"/>
+                    <h4 class="heading my-2">Log In</h4>
+                    <input type="email" name="email" class="form-control  my-3" id="emailid" placeholder="Enter Email ID" required/>
+                    <input type="password" name="password" id="password" class="form-control my-3"placeholder="Enter Password" required/>
+                    <button type="submit" name="submit" id="submitbtn" class="btn btn-success mt-3 has-spinner"><span class="spinner"><i class="fa fa-refresh fa-spin mr-3"></i></span>Sign In</button>
                 </form>
-                <form class="form" id="course-form">
-                    <h4 class="fs-title">Course Form</h4>
-                    <input type="text" name="name" id="name" class="form-control mr-3 my-3" placeholder="Your Name" required>
-                    <input type="email" name="email" id="email" class="form-control mr-3 my-3" placeholder="Your Email" required>
-                    <select name="sub" id="sub" class="form-control mr-3 my-3" required>
-                            <option value="phy1">Physics - I</option>
-                            <option value="che1">Chemistry - I</option>
-                            <option value="math1">Mathematics - I</option>
-                            <option value="cs">Computer Science</option>
-                            <option value="eng">Communicative English</option>
-                            <option value="ee">Electrical Enginerring </option>
-                    </select>
-                    <select name="type" id="data_type" class="form-control mr-3 my-3" required>
-                        <option value="link">Provide Link to Notes</option>
-                        <option value="up">Upload Notes</option>
-                    </select>
-                    <input type="text" name="link" id="link" class="form-control mr-3 my-3" placeholder="Please Provide Link" required>
-                    <input type="file" name="doc" id="doc" class="form-control mr-3 my-3" required>
-                    <input type="submit" value="Submit data" id="submit" class="btn btn-primary form-control mr-3 my-3">
+                <form class="form course-form" id="course-form">
+                    <h4 class="heading my-2">Course Details</h4>
+                    <div class="form-row">
+                        <div class="form-group col-md-4 ">
+                            <input type="text" class="form-control mb-2" name="subcode" id="subcode" placeholder="Enter Course Code" required>
+                        </div>
+                        <div class="form-group col-md-4 ">
+                            <input type="text" class="form-control mb-2" name="subname" id="subname" placeholder="Enter Course Name" required>
+                        </div>
+                        <div class="form-group col-md-2 ">
+                            <input type="number" min="1" max="4" class="form-control mb-2" name="year" id="year" placeholder="Year Taken by" required>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <input type="number" min="1" max="4" class="form-control mb-2" name="credits" id="credits" placeholder="Credits Alloted" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <select name="practical" id="practical" class="form-control" required>
+                                <option value="">Does Course have practical</option>
+                                <option value="y">Yes</option>
+                                <option value="n">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <textarea name="aboutcourse" id="aboutcourse" class="form-control" rows="4" placeholder="About the course"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <table class="table table-resposnsive table-bordered" id="instructors">
+                            <thead>
+                                <th colspan="3">Instructors</th>
+                            </thead>
+                            <thead>
+                                <th>Name</th>
+                                <th>Picture</th>
+                                <th>Remove</th>
+                            </thead>  
+                        </table>
+                        <button type="button" class="btn btn-primary mx-2" id="addI"><i class="fa fa-plus"></i></button>
+                    </div>
+                    <div class="form-row my-3">
+                        <table class="table table-resposnsive table-bordered" id="schedule">
+                            <thead>
+                                <th colspan="3">Schedule</th>
+                            </thead>
+                            <thead>
+                                <th>Date</th>
+                                <th>Topic</th>
+                                <th>Remove</th>
+                            </thead>  
+                        </table>
+                        <button type="button" class="btn btn-primary mx-2 " id="addS"><i class="fa fa-plus"></i></button>
+                    </div>  
+                    <div class="form-row my-3">
+                        <div class="col-md-6 my-3">
+                            <table class="table table-resposnsive table-bordered" id="lnotes">
+                                <thead>
+                                    <th colspan="2">Lecture Notes</th>
+                                </thead>
+                                <thead>
+                                    <th>File</th>
+                                    <th>Remove</th>
+                                </thead>  
+                            </table>
+                            <button type="button" class="btn btn-primary mx-2 float-left" id="addnotes"><i class="fa fa-plus"></i></button>
+                        </div>
+                        <div class="col-md-6 my-3">
+                            <table class="table table-resposnsive table-bordered" id="psets">
+                                <thead>
+                                    <th colspan="2">Problem Sets</th>
+                                </thead>
+                                <thead>
+                                    <th>File</th>
+                                    <th>Remove</th>
+                                </thead>  
+                            </table>
+                        <button type="button" class="btn btn-primary mx-2 float-left" id="addpsets"><i class="fa fa-plus"></i></button>
+                        </div>
+                    </div>      
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <table class="table table-responsive table-bordered ">
+                                <thead>
+                                    <th colspan="2">Marks Of Examinations Conducted</th>
+                                </thead>
+                                <thead>
+                                    <th>Name Of Exam</th>
+                                    <th>Link To Marksheet</th>
+                                </thead>
+                                <tr>
+                                    <td>Mid-Semester Exam - I</td>
+                                    <td><input type="file" name="midsem1" id="midsem1" class="form-control"></td>
+                                </tr>
+                                <tr>
+                                    <td>Mid-Semester Exam - II</td>
+                                    <td><input type="file" name="midsem2" id="midsem2" class="form-control"></td>
+                                </tr>
+                                <tr>
+                                    <td>End-Semester Exam</td>
+                                    <td><input type="file" name="endsem" id="endsem" class="form-control"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>  
+                    <div class="form-row my-3">
+                        <table class="table table-resposnsive table-bordered" id="refbooks">
+                            <thead>
+                                <th colspan="3">Reference Books</th>
+                            </thead>
+                            <thead>
+                                <th>Book Name</th>
+                                <th>File</th>
+                                <th>Remove</th>
+                            </thead>  
+                        </table>
+                        <button type="button" class="btn btn-primary mx-2 " id="addbooks"><i class="fa fa-plus"></i></button>
+                    </div>           
+                    <input type="submit" value="Submit data" id="submit" class="btn btn-primary mr-3 my-3">
                 </form>
             </div>
         </div>
     </div> 
-    <script src="js/jquery.min.js"></script>
-    <script src='js/jquery-ui-min.js'></script>
-    <script src="js/bootstrap.min.js"></script>
     <script src="/__/firebase/6.3.3/firebase-app.js"></script>
     <script src="/__/firebase/6.3.3/firebase-auth.js"></script>
     <script src="/__/firebase/6.3.3/firebase-database.js"></script>
     <script src="/__/firebase/6.3.3/firebase-storage.js"></script>
     <script src="/__/firebase/6.3.3/firebase-firestore.js"></script>
     <script src="/__/firebase/init.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src='js/jquery-ui-min.js'></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/sweetalert.js"></script>
     <script src="js/add_course.js"></script>
 </body>
 </html>

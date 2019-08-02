@@ -5,12 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Technology Area</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top mx-2" alt="logo">CUCSE Notes
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>  
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </a></li>
+                <li class="nav-item">
+                        <a class="nav-link" href="questionpaper.html">Question Papers</a>
+                </a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Uploads</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="upload.html">Miscellaneous Uploads</a>
+                            <a class="dropdown-item" href="common.html">Bulk Upload</a>
+                            <a class="dropdown-item" href="add_data.html">Course Notes</a>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Notes</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="gate.html">GATE</a>
+                        <a class="dropdown-item" href="course_notes.html">Course Notess</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">New Technologies</a>
+                        <a class="dropdown-item" href="#">Miscellaneous</a>
+                    </div>
+                </a></li>
+                <li class="nav-item">
+                    <a class="nav-link " href="books.html">Books</a>
+                </a></li>
+                <li class="nav-item">
+                    <a class="nav-link " href="courses.html">Courses</a>
+                </a></li>
+                <li class="nav-item">
+                    <a class="nav-link " href="add_course.html">Add Courses</a>
+                </a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right text-white">
+                <li class="nav-item profid mx-3" id="profid">Hello <span id="name">Prof- name</span></li>
+                <li class="nav-item logout mx-3" id="logout"><a>Log Out</a></li>
+            </ul>
+        </div>
+    </nav>
         <script src="/__/firebase/6.3.3/firebase-app.js"></script>
         <script src="/__/firebase/6.3.3/firebase-database.js"></script>
         <script src="/__/firebase/6.3.3/firebase-storage.js"></script>
         <script src="/__/firebase/6.3.3/firebase-firestore.js"></script>
         <script src="/__/firebase/init.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
 </body>
 </html>

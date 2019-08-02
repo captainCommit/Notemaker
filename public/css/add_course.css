@@ -12,10 +12,11 @@ html {
 }
 
 body {
-    overflow: hidden;
+    overflow-x: hidden;
     font-family: montserrat, arial, verdana;
     background: transparent;
 }
+
 .profid{
     visibility: hidden;
 }
@@ -26,14 +27,39 @@ body {
 .logout:hover{
     color:blue;
 }
-
+.heading{
+    font-family: 'Roboto Mono',monospace;
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
 /*form styles*/
 #msform {
     text-align: center;
     position: relative;
     margin-top: 30px;
 }
-
+.loader{
+    visibility: hidden
+}
+.spinner {
+    display: inline-block;
+    opacity: 0;
+    max-width: 0;
+    -webkit-transition: opacity 0.25s, max-width 0.45s;
+    -moz-transition: opacity 0.25s, max-width 0.45s;
+    -o-transition: opacity 0.25s, max-width 0.45s;
+    transition: opacity 0.25s, max-width 0.45s;
+    /* Duration fixed since we animate additional hidden width */
+  }
+  
+  .has-spinner.active {
+    cursor: progress;
+  }
+  .has-spinner.active .spinner {
+    opacity: 1;
+    max-width: 50px;
+    /* More than it will ever come, notice that this affects on animation duration */
+  }
 #msform form {
     background: white;
     border: 0 none;
@@ -51,4 +77,11 @@ body {
 /*Hide all except first form*/
 #msform form:not(:first-of-type) {
     display: none;
+}
+@media only screen and (min-width: 770px)
+{
+    .course-form{
+        margin-left:-15vw !important;
+        width: 80vw !important;
+    }
 }
