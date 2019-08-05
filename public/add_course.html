@@ -60,6 +60,18 @@
             </ul>
         </div>
     </nav>
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">  
+                <div class="modal-body">
+                    <div class="row text-left mx-5">
+                        Please wait while your files are being uploaded
+                        <span id="list"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row d-flex justify-content-center main">
         <div class="col-md-6 ">
             <div id="msform" class="text-center">
@@ -73,21 +85,21 @@
                     <h4 class="heading my-2">Course Details</h4>
                     <div class="form-row">
                         <div class="form-group col-md-4 ">
-                            <input type="text" class="form-control mb-2" name="subcode" id="subcode" placeholder="Enter Course Code" required>
+                            <input type="text" class="form-control mb-2" name="subcode" id="subcode" placeholder="Enter Course Code" >
                         </div>
                         <div class="form-group col-md-4 ">
-                            <input type="text" class="form-control mb-2" name="subname" id="subname" placeholder="Enter Course Name" required>
+                            <input type="text" class="form-control mb-2" name="subname" id="subname" placeholder="Enter Course Name" >
                         </div>
                         <div class="form-group col-md-2 ">
-                            <input type="number" min="1" max="4" class="form-control mb-2" name="year" id="year" placeholder="Year Taken by" required>
+                            <input type="number" min="1" max="4" class="form-control mb-2" name="year" id="year" placeholder="Year Taken by" >
                         </div>
                         <div class="form-group col-md-2">
-                            <input type="number" min="1" max="4" class="form-control mb-2" name="credits" id="credits" placeholder="Credits Alloted" required>
+                            <input type="number" min="1" max="4" class="form-control mb-2" name="credits" id="credits" placeholder="Credits Alloted" >
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <select name="practical" id="practical" class="form-control" required>
+                            <select name="practical" id="practical" class="form-control" >
                                 <option value="">Does Course have practical</option>
                                 <option value="y">Yes</option>
                                 <option value="n">No</option>
@@ -122,7 +134,44 @@
                             </thead>  
                         </table>
                         <button type="button" class="btn btn-primary mx-2 " id="addS"><i class="fa fa-plus"></i></button>
-                    </div>  
+                    </div>
+                    <div class="form-row my-3">
+                        <div class="col-md-6">
+                            <table class="table table-resposnsive table-bordered" id="examdates">
+                                <thead>
+                                    <th colspan="2">Exam Dates</th>
+                                </thead>
+                                <thead>
+                                    <th>Exam Type</th>
+                                    <th>Date</th>
+                                </thead>
+                                <tr>
+                                    <td>Mid Sem 1</td>
+                                    <td><input type="text" name="date" id="midsem1date" class="form-control"></td>
+                                </tr>
+                                <tr>
+                                    <td>Mid Sem 2</td>
+                                    <td><input type="text" name="date" id="midsem2date" class="form-control"></td>
+                                </tr> 
+                                <tr>
+                                    <td>End Sem </td>
+                                    <td><input type="text" name="date" id="endsemdate" class="form-control"></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <table class="table table-resposnsive table-bordered" id="syllabus">
+                                <thead>
+                                    <th colspan="2">Syllabus</th>
+                                </thead>
+                                <thead>
+                                    <th>Topic</th>
+                                    <th>Remove</th>
+                                </thead>  
+                            </table>
+                            <button type="button" class="btn btn-primary mx-2 float-left" id="addsyllabus"><i class="fa fa-plus"></i></button>
+                        </div>
+                    </div>
                     <div class="form-row my-3">
                         <div class="col-md-6 my-3">
                             <table class="table table-resposnsive table-bordered" id="lnotes">
@@ -150,7 +199,7 @@
                         </div>
                     </div>      
                     <div class="form-row">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <table class="table table-responsive table-bordered ">
                                 <thead>
                                     <th colspan="2">Marks Of Examinations Conducted</th>
@@ -172,6 +221,30 @@
                                     <td><input type="file" name="endsem" id="endsem" class="form-control"></td>
                                 </tr>
                             </table>
+                        </div>
+                        <div class="col-md-6 mx-2s">
+                            <div class="form-row my-2">
+                                <textarea name="prerequisites" id="prerequisites" class="form-control" rows="6" placeholder="Enter Prerequisites" ></textarea>
+                            </div>
+                            <div class="form-row my-2">
+                                <select id="level" class="form-control" name="level" >
+                                    <option value="">Course Level</option>
+                                    <option value="ug">Undergraduate</option>
+                                    <option value="pg">Postgraduate</option>
+                                </select>
+                            </div>
+                            <div class="form-row my-2">
+                                <input type="date" name="startingdate" id="startingdate" class="form-control"  placeholder="Enter Starting Date">
+                            </div>
+                            <div class="form-row my-2">
+                                <select id="length" class="form-control" name="length" >
+                                    <option value="">Length Of Course</option>
+                                    <option value="6">6 weeks</option>
+                                    <option value="8">8 weeks</option>
+                                    <option value="12">12 weeks</option>
+                                    <option value="18">18 weeks</option>
+                                </select>
+                            </div>
                         </div>
                     </div>  
                     <div class="form-row my-3">

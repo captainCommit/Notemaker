@@ -6,7 +6,12 @@
     margin: 0;
     padding: 0;
 }
-
+#uploader{
+    -webkit-appearance: none;
+    appearance: none;
+    margin:10px;
+    width:100%;
+}
 html {
     height: 100%;
 }
