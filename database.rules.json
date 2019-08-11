@@ -1,5 +1,8 @@
 {
   "rules": {
+    "CourseWriter": {
+      ".indexOn" : "addedBy"
+    },
     ".read": "true",
     ".write": "true"
   }

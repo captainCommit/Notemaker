@@ -65,7 +65,7 @@ body {
     max-width: 50px;
     /* More than it will ever come, notice that this affects on animation duration */
   }
-#msform form {
+#msform form{
     background: white;
     border: 0 none;
     border-radius: 0px;
@@ -78,15 +78,31 @@ body {
     /*stacking forms above each other*/
     position: relative;
 }
-
+.accordion .header{
+    text-decoration: none !important;
+}
+.header:hover{
+    text-decoration: none;
+    color:black;
+    font-weight: bolder;
+}
+.edit-form{
+    min-width: 70vw !important;
+}
 /*Hide all except first form*/
 #msform form:not(:first-of-type) {
     display: none;
 }
 @media only screen and (min-width: 770px)
 {
-    .course-form{
-        margin-left:-10vw !important;
+    #other-forms{
+        margin-left:-15vw !important;
         width: 80vw !important;
+    }
+}
+@media only screen and (max-width: 770px)
+{
+    .accordion{
+        max-width: 69vw !important;
     }
 }

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
-<body onload="checkAuthState()">
+<body  onload="checkAuthState()">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
             <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top mx-2" alt="logo">CUCSE Notes
@@ -36,23 +36,27 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Notes</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="gate.html">GATE</a>
-                        <a class="dropdown-item" href="course_notes.html">Course Notess</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">New Technologies</a>
-                        <a class="dropdown-item" href="#">Miscellaneous</a>
-                    </div>
-                </a></li>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="gate.html">GATE</a>
+                            <a class="dropdown-item" href="course_notes.html">Course Notes</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">New Technologies</a>
+                            <a class="dropdown-item" href="#">Miscellaneous</a>
+                        </div>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link " href="books.html">Books</a>
                 </a></li>
-                <li class="nav-item">
-                    <a class="nav-link " href="courses.html">Courses</a>
-                </a></li>
-                <li class="nav-item">
-                    <a class="nav-link " href="add_course.html">Add Courses</a>
-                </a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Courses</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="addcourse.html">Add Course</a>
+                            <a class="dropdown-item" href="editcourse.html">Edit Course</a>
+                            <a class="dropdown-item" href="viewcourse.html">View Courses</a>
+                        </div>
+                    </a>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right text-white">
                 <li class="nav-item profid mx-3" id="profid">Hello <span id="name">Prof- name</span></li>

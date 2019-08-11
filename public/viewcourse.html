@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Courses</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Document</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -34,48 +34,30 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Notes</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="gate.html">GATE</a>
-                        <a class="dropdown-item" href="course_notes.html">Course Notess</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">New Technologies</a>
-                        <a class="dropdown-item" href="#">Miscellaneous</a>
-                    </div>
-                </a></li>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="gate.html">GATE</a>
+                            <a class="dropdown-item" href="course_notes.html">Course Notes</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">New Technologies</a>
+                            <a class="dropdown-item" href="#">Miscellaneous</a>
+                        </div>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link " href="books.html">Books</a>
                 </a></li>
-                <li class="nav-item">
-                    <a class="nav-link " href="courses.html">Courses</a>
-                </a></li>
-                <li class="nav-item">
-                    <a class="nav-link " href="add_course.html">Add Courses</a>
-                </a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Courses</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="addcourse.html">Add Course</a>
+                            <a class="dropdown-item" href="editcourse.html">Edit Course</a>
+                            <a class="dropdown-item" href="viewcourse.html">View Courses</a>
+                        </div>
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
-    <div class="main ">
-        <div class="row d-flex justify-content-center my-3 ">
-            <div class="col-md-8">
-                <form class="form-inline" id="courseform">
-                    <input type="text" name="courseid" id="courseid" class="form-control mx-3" placeholder=" Enter Course ID / Name">
-                    <select name="type" id="type" class="form-control mx-3">
-                        <option value="id">Search by Course ID</option>
-                        <option value="name">Search by Course Name</option>
-                    </select>
-                    <input type="submit" value="Get Course Data" id="submit" class="btn btn-primary mx-3">
-                </form>
-            </div>
-        </div>
-        <div class="row d-flex justify-content-center my-2">
-            <div class="col-md-8 info"></div>
-        </div>
-    </div>
-    <script src="/__/firebase/6.3.3/firebase-app.js"></script>
-    <script src="/__/firebase/6.3.3/firebase-database.js"></script>
-    <script src="/__/firebase/6.3.3/firebase-storage.js"></script>
-    <script src="/__/firebase/6.3.3/firebase-firestore.js"></script>
-    <script src="/__/firebase/init.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </body>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit Course</title>
+    <link rel="stylesheet" href="css/editcourse.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body onload="checkAuthState()">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top mx-2" alt="logo">CUCSE Notes
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>  
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </a></li>
+                <li class="nav-item">
+                        <a class="nav-link" href="questionpaper.html">Question Papers</a>
+                </a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Uploads</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="upload.html">Miscellaneous Uploads</a>
+                            <a class="dropdown-item" href="common.html">Bulk Upload</a>
+                            <a class="dropdown-item" href="add_data.html">Course Notes</a>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Notes</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="gate.html">GATE</a>
+                            <a class="dropdown-item" href="course_notes.html">Course Notes</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">New Technologies</a>
+                            <a class="dropdown-item" href="#">Miscellaneous</a>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="books.html">Books</a>
+                </a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Courses</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                           <a class="dropdown-item" href="addcourse.html">Add Course</a>
+                            <a class="dropdown-item" href="editcourse.html">Edit Course</a>
+                            <a class="dropdown-item" href="viewcourse.html">View Courses</a>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right text-white">
+                <li class="nav-item profid mx-3" id="profid">Hello <span id="name">Prof- name</span></li>
+                <li class="nav-item logout mx-3" id="logout"><a>Log Out</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">  
+                <div class="modal-body">
+                    <div class="row text-left mx-5">
+                        Please wait while your files are being uploaded
+                        <span id="uplist"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6">
+                <div id="msform" class="text-center">
+                    <form class="form forms" id="login-form">
+                        <h4 class="heading my-2">Log In</h4>
+                        <input type="email" name="email" class="form-control  my-3" id="emailid" placeholder="Enter Email ID" required/>
+                        <input type="password" name="password" id="password" class="form-control my-3"placeholder="Enter Password" required/>
+                        <button type="submit" name="submit" id="submitbtn" class="btn btn-success mt-3 has-spinner"><span class="spinner"><i class="fa fa-refresh fa-spin mr-3"></i></span>Sign In</button>
+                    </form>
+                    <form class="form" id="other-forms" >
+                        <div class="row d-flex justify-content-center my-4">
+                            <div class="col-md-6">
+                            <h3 class="text-center">Select Course</h3><br>
+                            <label for="list">Select Course For Editing</label>
+                            <select name="list" id="list" class="form-control" disabled>
+                            </select><br>
+                                <p>You can only edit courses that you have created</p>
+                            </div>
+                        </div>
+                        <div class="row d-flex justify-content-center my-2">
+                            <h4>Edit Course</h4>
+                        </div>
+                        <div class="row d-flex text-left justify-content-center">
+                            <div class="row">
+                                <div class="accordion col-md-12 edit-form" id="accordionExample">
+                                    <div class="card">
+                                        <div class="card-header" id="headingZero">
+                                            <h2 class="mb-0">
+                                                <button class="header btn btn-link text-left " type="button" data-toggle="collapse" data-target="#collapseZero" aria-expanded="true" aria-controls="collapseZero">
+                                                        Upload Documents
+                                                </button>
+                                            </h2>
+                                        </div>
+                                        <div id="collapseZero" class="collapse" aria-labelledby="headingZero" data-parent="#accordionExample">
+                                            <div class="card-body text-center">
+                                                <div class="form-row my-3">
+                                                    <div class="col-md-6 my-3">
+                                                        <table class="table table-resposnsive table-bordered" id="lnotes">
+                                                            <thead>
+                                                                <th colspan="2">Lecture Notes</th>
+                                                            </thead>
+                                                            <thead>
+                                                                <th>File</th>
+                                                                <th>Remove</th>
+                                                            </thead>  
+                                                        </table>
+                                                        <button type="button" class="btn btn-primary mx-2 float-left" id="addnotes"><i class="fa fa-plus"></i></button>
+                                                    </div>
+                                                    <div class="col-md-6 my-3">
+                                                        <table class="table table-resposnsive table-bordered" id="psets">
+                                                            <thead>
+                                                                <th colspan="2">Problem Sets</th>
+                                                            </thead>
+                                                            <thead>
+                                                                <th>File</th>
+                                                                <th>Remove</th>
+                                                            </thead>  
+                                                        </table>
+                                                    <button type="button" class="btn btn-primary mx-2 float-left" id="addpsets"><i class="fa fa-plus"></i></button>
+                                                    </div>
+                                                </div>
+                                                <button type="button" class="btn btn-primary" id="uploadDocs" name="uploadDocs"> Upload Documents</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="headingOne">
+                                            <h2 class="mb-0">
+                                                <button class="header btn btn-link text-left " type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                        Upload Reference Books
+                                                </button>
+                                            </h2>
+                                        </div>
+                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                            <div class="card-body text-center">
+                                                <div class="form-row my-3">
+                                                    <table class="table table-resposnsive table-bordered" id="refbooks">
+                                                        <thead>
+                                                            <th colspan="3">Reference Books</th>
+                                                        </thead>
+                                                        <thead>
+                                                            <th>Book Name</th>
+                                                            <th>File</th>
+                                                            <th>Remove</th>
+                                                        </thead>  
+                                                    </table>
+                                                    <button type="button" class="btn btn-primary mx-2 " id="addbooks"><i class="fa fa-plus"></i></button>
+                                                </div>  
+                                                <button type="button" class="btn btn-primary" id="uploadBooks" name="uploadBooks"> Upload Books</button>    
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="headingTwo">
+                                            <h2 class="mb-0">
+                                                <button class="header btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                                    Upload Marks
+                                                </button>
+                                            </h2> 
+                                        </div>
+                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                            <div class="card-body text-center">
+                                                <div class="row d-flex justify-content-center">
+                                                    <div class="col-md-6">
+                                                        <table class="table table-responsive table-bordered ">
+                                                            <thead>
+                                                                <th colspan="2">Marks Of Examinations Conducted</th>
+                                                            </thead>
+                                                            <thead>
+                                                                <th>Name Of Exam</th>
+                                                                <th>Link To Marksheet</th>
+                                                            </thead>
+                                                            <tr>
+                                                                <td>Mid-Semester Exam - I</td>
+                                                                <td id = "midsem1marks"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Mid-Semester Exam - II</td>
+                                                                <td id = "midsem2marks"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>End-Semester Exam</td>
+                                                                <td id="endsemmarks"></td>
+                                                            </tr>
+                                                        </table>
+                                                        <button type="button" class="btn btn-primary" id="submitMarks" name="submitMarks"> Upload Marks </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="headingThree">
+                                            <h2 class="mb-0">
+                                                <button class="header btn btn-link" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                                        Change Exam Dates
+                                                </button>
+                                            </h2> 
+                                        </div>
+                                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                            <div class="card-body text-center">
+                                                <table class="table table-resposnsive table-bordered" id="examdates">
+                                                    <thead>
+                                                        <th colspan="2">Exam Dates</th>
+                                                    </thead>
+                                                    <thead>
+                                                        <th>Exam Type</th>
+                                                        <th>Date</th>
+                                                    </thead>
+                                                    <tr>
+                                                        <td>Mid Sem 1</td>
+                                                        <td><input type="text" name="date" id="midsem1date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Mid Sem 2</td>
+                                                        <td><input type="text" name="date" id="midsem2date" class="form-control"></td>
+                                                    </tr> 
+                                                    <tr>
+                                                        <td>End Sem </td>
+                                                        <td><input type="text" name="date" id="endsemdate" class="form-control"></td>
+                                                    </tr>
+                                                </table>
+                                                <button type="button" class="btn btn-primary" id="changeDate" name="changeDate"> Change Exam Date </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="headingFour">
+                                            <h2 class="mb-0">
+                                                <button class="header btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                                    Change Scehdule / Syllabus
+                                                </button>
+                                            </h2> 
+                                        </div>
+                                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                                            <div class="card-body text-center">
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                        <table class="table table-resposnive table-bordered" id="schedule">
+                                                            <thead>
+                                                                <th colspan="3">Scehdule</th>
+                                                            </thead>
+                                                            <tr>
+                                                                <td>Date</td>
+                                                                <td>Topic</td>
+                                                                <td>Remove</td>
+                                                            </tr>
+                                                        </table>
+                                                        <button type="button" class="btn btn-primary my-3 float-left" id="addS"><i class="fa fa-plus"></i></button>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <table class="table table-resposnive table-bordered" id="syllabus">
+                                                            <thead>
+                                                                <th colspan="2">Syllabus</th>
+                                                            </thead>
+                                                            <tr>
+                                                                <td>Topic</td>
+                                                                <td>Remove</td>
+                                                            </tr>
+                                                        </table>
+                                                        <button type="button" class="btn btn-primary mx-2 float-left" id="addsyllabus"><i class="fa fa-plus"></i></button>
+                                                    </div>
+                                                </div>
+                                                <button type="button" class="btn btn-primary my-3" id="changeData" name="changeData"> Update Syllabus/Schedule </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/__/firebase/6.3.3/firebase-app.js"></script>
+    <script src="/__/firebase/6.3.3/firebase-auth.js"></script>
+    <script src="/__/firebase/6.3.3/firebase-database.js"></script>
+    <script src="/__/firebase/6.3.3/firebase-storage.js"></script>
+    <script src="/__/firebase/6.3.3/firebase-firestore.js"></script>
+    <script src="/__/firebase/init.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src='js/jquery-ui-min.js'></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/sweetalert.js"></script>
+    <script src="js/editcourse.js"></script>
+</body>
+</html>

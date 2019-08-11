@@ -20,7 +20,8 @@ function checkAuthState()
         $('#course-form').show(); 
         logout.style.visibility="visible"
         banner.style.visibility = "visible"
-        name.innerHTML = user.email  
+        name.innerHTML = user.email
+        window.email = user.email  
     }
     else
     {
@@ -34,6 +35,7 @@ function checkAuthState()
 }
 auth.onAuthStateChanged((user)=>{
     console.log(user)
+    window.user = user
     if(user != null)
     {
         $('#login-form').hide();
@@ -56,6 +58,8 @@ async function logIn(e){
     e.preventDefault()
     const email = document.getElementById('emailid')
     const password = document.getElementById('password')
+    window.email = email.value
+    window.password = password.value
     $('#submitbtn').addClass('active')
     try {
         var x = await auth.signInWithEmailAndPassword(email.value,password.value)
@@ -453,21 +457,24 @@ function submitForm(e)
             }
             console.log(uploadObject)
             try {
-                var res = await firestore.collection('Course').add(uploadObject)
-                Swal.fire('Yayy!!','The course is added succesfully','success')
-                try
-                {
-                await database.ref('CourseWriter').push({
-                    courseId : res.id,
-                    addedBy : name.innerHTML,
-                    time : getDate(),
-                    })
-                }
-                catch(error)
-                {
-                    console.log('error : ',error.message)
-                }
-            } catch (error) {
+                    var res = await firestore.collection('Course').add(uploadObject)
+                    Swal.fire('Yayy!!','The course is added succesfully','success')
+                    try
+                    {
+                    await database.ref('CourseWriter').push({
+                        courseId : res.id,
+                        addedBy : firebase.auth().currentUser.email,
+                        subcode : uploadObject['subcode'],
+                        time : getDate(),
+                        })
+                    }
+                    catch(error)
+                    {
+                        console.log('error : ',error.message)
+                    }
+            } 
+            catch (error) 
+            {
                 Swal.fire('Oops',error.message,'error')
             }
         }
@@ -496,7 +503,10 @@ async function upload()
                 continue
             var file = obj[ele]['link']
             if(file == undefined)
+            {
+                temp[prop][ele]['link'] = "undefined"
                 continue
+            }
             sRef = storage.ref('Course/'+file.name)
             try {
                 showModal();
@@ -527,7 +537,10 @@ async function upload()
         else
         {
             if(file == undefined)
+            {
+                temp[arr[x]] = "null"
                 continue
+            }
             sRef = storage.ref('Course/'+file.name)
             try {
                 var url = await sRef.put(file) 
