@@ -462,9 +462,11 @@ function submitForm(e)
                     try
                     {
                     await database.ref('CourseWriter').push({
+                        type : 'add',
                         courseId : res.id,
                         addedBy : firebase.auth().currentUser.email,
                         subcode : uploadObject['subcode'],
+                        component : 'full',
                         time : getDate(),
                         })
                     }
