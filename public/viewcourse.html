@@ -5,9 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/viewcourse.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>View Course</title>
 </head>
 <body>
+    <div class="modal" id="myModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Subject Details of <span id="heading"></span></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body" style="padding:10px;">
+                <div class="row">
+                    <div class="col-md-6">
+                        Course Name : <span id = "subname"></span><br>
+                        Course Code : <span id = "subcode"></span><br>
+                        Taught in <span id="level"></span>&nbsp;Level <br>
+                        Starting Date : <span id="startingdate"></span><br>
+                    </div>
+                    <div class="col-md-6">
+                        Taught in <span id="year"></span> year <br>
+                        Length Of Course <span id="length"></span> weeks<br>
+                        Has <span id="has_practical"></span> Practical classes <br>
+                        Credits Alloted : <span id="credits_alloted"></span><br>
+                    </div>
+                </div>
+                <div class="row mx-2">
+                    <h6 class = "mb-2 mx-10 text-muted"><u>About Course</u>&nbsp;&nbsp;&nbsp;</h6>
+                    <p id="aboutcourse">
+                    </p>
+                </div>
+                <div class="row mx-2">
+                    <h6 class = "mb-2 mx-10 text-muted"><u>Prerequisites </u>&nbsp;&nbsp;&nbsp;</h6>
+                    <p id="prerequisites">
+                    </p>
+                </div>
+                <h6 class="mb-2 text-muted">Instructors</h6>
+                <div class="row mx-2 my-2" id="instructors"></div>
+                <h6 class="mb-2 text-muted">Lecture Notes</h6>
+                <div class="row mx-2 my-2" >
+                    <div class="list-group" id="lecture_notes"></div>
+                </div>
+            </div> 
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+    </div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
             <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top mx-2" alt="logo">CUCSE Notes
@@ -58,7 +108,42 @@
             </ul>
         </div>
     </nav>
+    <div class="main">
+        <div class="row d-flex justify-content-center mx-3 my-5">
+            <div class="col-md-8">
+                <div class="form-row">
+                    <div class="col-md-6 my-2 text-center">
+                        <input type="text" class="form-control" id="search-query" placeholder="Enter Search Query" required>
+                    </div>
+                    <div class="col-md-4 my-2 text-center">
+                        <select name="type" id="type-of-query" class="form-control">
+                            <option value="">Type Of Search</option>
+                            <option value="name">Name Of Course</option>
+                            <option value="id">Course ID</option>
+                            <option value="year">Year</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2 my-2 text-center">
+                        <button class="btn btn-primary" id="submitbtn" type="submit">Search</button>
+                    </div>
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->            
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center mx-3 my-5">
+        <div class="col-md-8 card-container" id="card-container">
+        </div>
+    </div>
+    <script src="/__/firebase/6.3.3/firebase-app.js"></script>
+    <script src="/__/firebase/6.3.3/firebase-auth.js"></script>
+    <script src="/__/firebase/6.3.3/firebase-database.js"></script>
+    <script src="/__/firebase/6.3.3/firebase-storage.js"></script>
+    <script src="/__/firebase/6.3.3/firebase-firestore.js"></script>
+    <script src="/__/firebase/init.js"></script>
     <script src="js/jquery.min.js"></script>
+    <script src='js/jquery-ui-min.js'></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/sweetalert.js"></script>
+    <script src="js/viewcourse.js"></script>
 </body>
 </html>

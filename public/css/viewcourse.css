@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+body{
+    overflow-x: hidden;
+}
+input,select,button{
+    font-family: 'Roboto Mono',monospace;
+}
+#filler{
+    word-wrap: break-word;
+    width:60%;
+    border : 1.5px solid black;
+    padding: 10px;
+}
+.image{
+    max-width: 200px !important;
+    max-height: 200px  !important;
+}
+.card{
+    -webkit-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.75);
+}
+.container {
+    position: relative;
+    width: 50%;
+  }
+  
+  .image {
+    display: block;
+    width: 200%;
+    height: auto;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 150%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #008CBA;
+  }
+  
+  .container:hover .overlay {
+    opacity: 1;
+  }
+  
+  .text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }

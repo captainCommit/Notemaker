@@ -9,13 +9,14 @@ const banner = document.getElementById('profid')
 const name = document.getElementById('name')
 const list = document.getElementById('list')
 var user = auth.currentUser
-function checkAuthState()
+async function checkAuthState()
 {
    
     logout.addEventListener('click',logOut)
     loginForm.addEventListener('submit',logIn)
     if(user != null)
     {
+        await getCourses()
         $('#login-form').hide();
         $('#course-form').show(); 
         logout.style.visibility="visible"
@@ -64,7 +65,7 @@ async function logIn(e){
     try {
         var x = await auth.signInWithEmailAndPassword(email.value,password.value)
     } catch (error) {
-        Swal.fire('Oops',error.message,'error')
+        Swal.fire('Oops',error.message,'error').then(async ()=>{ var x = await getCourses()})
         $('#submitbtn').removeClass('active')
         $('#login-form').trigger("reset")
         return;
@@ -82,7 +83,7 @@ async function logOut(e){
     }
     catch(error)
     {
-        Swal.fire('Oops',error.message,'error')
+        Swal.fire('Oops',error.message,'error').then(async ()=>{ var x = await getCourses()})
         return;
     }
     logout.style.visibility="hidden"
@@ -92,10 +93,10 @@ async function logOut(e){
 }
 async function getCourses()
 {
-   // var list = document.getElementById('list')
     var dRef = database.ref('CourseWriter')
     var courseDict = []
     var snapShot = await dRef.orderByChild("addedBy").equalTo(window.email).once('value')
+    list.innerHTML = ""
     for(x in snapShot.val())
     {
         var option = document.createElement('option')
@@ -281,11 +282,11 @@ function hideModal()
 }
 async function populate(e)
 {
+    console.log('changed')
     if(e!=null)
     {
         e.preventDefault();
         subId = list.options[list.selectedIndex].value;
-        
     }
     else
     {
@@ -371,6 +372,7 @@ function populate_table(data,table_id,type,structure,data_tag)
 {
     const table = document.getElementById(table_id)
     const btn = document.createElement('button')
+    $('#'+table_id).find("tr:gt(1)").remove();
     btn.className += "btn btn-warning"
     btn.type = "button"
     btn.id = "remove"
@@ -562,7 +564,7 @@ async function uploadDocs(){
     uplist.innerHTML = ""
     var newLNotes = sumbitTable( document.getElementById('lnotes'),['file'],['link'],window.courseObject['lecture_notes'].length+2)
     var newPSets = sumbitTable( document.getElementById('psets'),['file'],['link'],window.courseObject['problem_sets'].length+2)
-        list.innerHTML = ""
+    list.innerHTML = ""
         var lec = []
         var ps = []
         if(newLNotes != null)
@@ -585,10 +587,11 @@ async function uploadDocs(){
                 }catch(err)
                 {
                     hideModal()
-                    Swal.fire('Oops',err.message,'error')
+                    Swal.fire('Oops',err.message,'error').then(async ()=>{ var x = await getCourses()})
                     return null
                 }
             }
+            
             hideModal()
         }
         if(newPSets != null)
@@ -603,6 +606,7 @@ async function uploadDocs(){
                 var ref = storage.ref('Course/'+newPSets[x]['link'].name)
                 try{
                     var res = await ref.put(newPSets[x]['link'])
+                    console.log(res)
                     var p = document.createElement('p')
                     p.innerHTML = newPSets[x]['link'].name + " has been uploaded successfully."
                     ps.push(await res.ref.getDownloadURL())
@@ -610,28 +614,31 @@ async function uploadDocs(){
                 }catch(err)
                 {
                     hideModal()
-                    Swal.fire('Oops',err.message,'error')
+                    Swal.fire('Oops',err.message,'error').then(async ()=>{ var x = await getCourses()})
                     return null
                 }
             }
             hideModal()
         }
-        if((lec.length != 0 && JSON.stringify(lec) != JSON.stringify(window.courseObject['lecture_notes']))&&(ps.length != 0  && JSON.stringify(ps) != JSON.stringify(window.courseObject['problem_sets'])))  
+        console.log(lec.length != 0,JSON.stringify(lec) != JSON.stringify(window.courseObject['lecture_notes']))
+        console.log(ps.length != 0,JSON.stringify(ps) != JSON.stringify(window.courseObject['problem_sets']))
+        if((lec.length != 0 && JSON.stringify(lec) != JSON.stringify(window.courseObject['lecture_notes']))||(ps.length != 0  && JSON.stringify(ps) != JSON.stringify(window.courseObject['problem_sets'])))  
         {
             writeObject('Course',window.currentCoureId,['lecture_notes','problem_sets'],[lec,ps]).then((res)=>{
-                if(res)
-                        Swal.fire('Success','Lecture Notes And Problem Sets Have Been Changed Successfully','info')
+                if(res!=null)
+                        Swal.fire('Success','Lecture Notes And Problem Sets Have Been Changed Successfully','info').then(async ()=>{ var x = await getCourses()})
                     else
                     {
-                        Swal.fire('Sorry','Lecture Notes And Problem Sets could not be changed please try again','warning')
+                        Swal.fire('Sorry','ecture Notes And Problem Sets Could Not Be Changed Successfully','warning').then(async ()=>{ var x = await getCourses()})
                         return
                     }
             })
         }
         else{
-            Swal.fire('Phew!!','Nothing to change...','info')
+            Swal.fire('Phew!!','Nothing to change...','info').then(async ()=>{ var x = await getCourses()})
         }
-}
+    }
+        
 async function uploadBooks(){
     uplist.innerHTML = ""
     var newRefBooks = sumbitTable(document.getElementById('refbooks'),['text','file'],['name','link'],Object.keys(window.courseObject['reference_books']).length+ 2)
@@ -659,7 +666,7 @@ async function uploadBooks(){
             } 
             catch (err) {
                     hideModal()
-                    Swal.fire('Oops',err.message,'error')
+                    Swal.fire('Oops',err.message,'error').then(async ()=>{ var x = await getCourses()})
                     return null
             }
             
@@ -669,19 +676,19 @@ async function uploadBooks(){
     if(Object.keys(dict).length > 0 && JSON.stringify(dict) != JSON.stringify(window.courseObject['reference_books']))
     {    
         writeObject('Course',window.currentCoureId,['reference_books'],[dict]).then((res)=>{
-            if(res)
-                    Swal.fire('','List of Reference Books Have Been Updated','success')
+            if(res!=null)
+                    Swal.fire('','List of Reference Books Have Been Updated','success').then(async ()=>{ var x = await getCourses()})
                 else
                 {
-                    Swal.fire('Sorry','List of Reference Books could not be changed please try again','warning')
+                    Swal.fire('Sorry','List of Reference Books could not be changed please try again','warning').then(async ()=>{ var x = await getCourses()})
                     return
                 }
         })
     }
     else{
-        Swal.fire('Phew!!','Nothing to change...','info')
+        Swal.fire('Phew!!','Nothing to change...','info').then(async ()=>{ var x = await getCourses()})
     }
-}
+} 
 async function changeData(){
     var syl = []
     var sch = {}
@@ -696,19 +703,19 @@ async function changeData(){
     if((Object.keys(sch).length > 0 && JSON.stringify(sch) != JSON.stringify(window.courseObject['schedule']))&&(syl.length != 0 && JSON.stringify(syl) != JSON.stringify(window.courseObject['syllabus'])))
     {    
         writeObject('Course',window.currentCoureId,['syllabus','schedule'],[syl,sch]).then((res)=>{
-            if(res)
-                    Swal.fire('','Schedule And Syllabus Have Been Updated','success')
+            if(res!=null)
+                    Swal.fire('','Schedule And Syllabus Have Been Updated','success').then(async ()=>{ var x = await getCourses()})
                 else
                 {
-                    Swal.fire('Sorry','Schedule And Syllabus could not be changed please try again','warning')
+                    Swal.fire('Sorry','Schedule And Syllabus could not be changed please try again','warning').then(async ()=>{ var x = await getCourses()})
                     return
                 }
         })
     }
     else{
-        Swal.fire('Phew!!','Nothing to change...','info')
+        Swal.fire('Phew!!','Nothing to change...','info').then(async ()=>{ var x = await getCourses()})
     }
-}
+}  
 async function changeDate(){
     const MS1 = window.courseObject['exam_dates']['midsem1']
     const MS2 = window.courseObject['exam_dates']['midsem2']
@@ -731,22 +738,22 @@ async function changeDate(){
         {
             window.courseObject['exam_dates'] = {midsem1 : ms1,midsem2 : ms2,endsem : es}
             writeObject('Course',window.currentCoureId,['exam_dates'],[{midsem1 : ms1,midsem2 : ms2,endsem : es}]).then((res)=>{
-                if(res)
-                    Swal.fire('','Dates have been changed','success')
+                if(res!=null)
+                    Swal.fire('','Dates have been changed','success').then(async ()=>{ var x = await getCourses()})
                 else
                 {
-                    Swal.fire('Sorry','Dates could not be changed please try again','warning')
+                    Swal.fire('Sorry','Dates could not be changed please try again','warning').then(async ()=>{ var x = await getCourses()})
                     return
                 }
             })
         }
         else
         {
-            Swal.fire('','Dates are not changed','info')
+            Swal.fire('','Dates are not changed','info').then(async ()=>{ var x = await getCourses()})
         }
     }
     else{
-        Swal.fire('Phew!!','No Update is Required','info')
+        Swal.fire('Phew!!','No Update is Required','info').then(async ()=>{ var x = await getCourses()})
     }
 }
 async function submitMarks(){
@@ -776,7 +783,7 @@ async function submitMarks(){
     }
     if(files.length == 0)
     {
-        Swal.fire('','No files to upload','info')
+        Swal.fire('','No files to upload','info').then(async ()=>{ var x = await getCourses()})
         return
     }
     else
@@ -796,7 +803,7 @@ async function submitMarks(){
             catch(err)
             {
                 hideModal()
-                Swal.fire('Oops!!',err.message,'error')
+                Swal.fire('Oops!!',err.message,'error').then(async ()=>{ var x = await getCourses()})
                 return
             }
         }
@@ -816,11 +823,13 @@ async function submitMarks(){
     }
     window.courseObject['link_to_marks'] = m_dict
     writeObject('Course',window.currentCoureId,['link_to_marks'],[m_dict]).then((res)=>{
-        if(res)
-            Swal.fire('Yayy!!!','Marks files have been Uploaded Successfully','success')
+        if(res!=null)
+        {
+            Swal.fire('Yayy!!!','Marks files have been Uploaded Successfully','success').then(async ()=>{ var x = await getCourses()})
+        }
         else
         {
-            Swal.fire('Sorry','Marks files could not be uploaded please try again','warning')
+            Swal.fire('Sorry','Marks files could not be uploaded please try again','warning').then(async ()=>{ var x = await getCourses()})
             return
         }
     })
@@ -848,7 +857,7 @@ async function writeObject(collection,id,property,changed_parameter)
     }
     try{
         var x = await batch.commit()
-        var res = await database.ref('CourseWriter').push({
+        var res = await database.ref('CourseEditor').push({
             type : 'edit',
             courseId : window.currentCoureId,
             addedBy : firebase.auth().currentUser.email,
@@ -856,11 +865,14 @@ async function writeObject(collection,id,property,changed_parameter)
             component : property,
             time : getDate(),
         })
-        if(res)
+        console.log(res)
+        if(res != null)
             return true;
+        console.log(res)
     }catch(err)
     {
-        Swal.fire('Oops!!',err.message,'error')
+
+        Swal.fire('Oops!!',err.message,'error').then(async ()=>{ var x = await getCourses()})
         return false
     }
 }
