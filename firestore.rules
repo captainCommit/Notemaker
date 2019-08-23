@@ -7,6 +7,3 @@ service cloud.firestore {
     }
   }
 }
-
-
-AAMCM7358J
