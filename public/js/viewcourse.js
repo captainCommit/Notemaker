@@ -25,7 +25,12 @@ const aboutcourse = document.getElementById('aboutcourse')
 const prerequisites = document.getElementById('prerequisites')
 const instructors = document.getElementById('instructors')
 const lecture_notes = document.getElementById('lecture_notes')
-
+const problem_sets = document.getElementById('problem_sets')
+const syllabus = document.getElementById('syllabus')
+const schedule = document.getElementById('schedule')
+const exam_dates = document.getElementById('exam_dates')
+const exam_marks = document.getElementById('exam_marks')
+const reference_books = document.getElementById('reference_books')
 submitBtn.addEventListener('click',populate)
 
 async function populate(e)
@@ -185,9 +190,134 @@ function clickHandler(e)
     {
         var anchor = document.createElement('a')
         anchor.href = obj.lecture_notes[x]
-        anchor.class = 'list-group-item list-group-item-action'
+        anchor.className = 'btn btn-primary mx-2 my-2'
         anchor.innerText = 'Lecture '+(count++)
+        anchor.target = "_blank"
         lecture_notes.appendChild(anchor)
+    }
+    count = 1
+    problem_sets.innerHTML = ""
+    for(x in obj.problem_sets)
+    {
+        var anchor = document.createElement('a')
+        anchor.href = obj.problem_sets[x]
+        anchor.className = 'btn btn-primary mx-2 my-2'
+        anchor.innerText = 'Problem Set '+(count++)
+        anchor.target = "_blank"
+        problem_sets.appendChild(anchor)
+    }
+    reference_books.innerHTML = ""
+    for(x in obj.reference_books)
+    {
+        var anchor = document.createElement('a')
+        anchor.href = obj.reference_books[x]
+        anchor.className = 'btn btn-primary mx-2 my-2'
+        anchor.innerText = x
+        anchor.target = "_blank"
+        reference_books.appendChild(anchor)
+    }
+    syllabus.innerHTML= ""
+    for(x in obj.syllabus)
+    {
+        var li = document.createElement('li')
+        li.className = "mx-3 my-2"
+        li.id = 'sylpoint'
+        li.innerText = obj.syllabus[x]
+        syllabus.appendChild(li)
+    }
+    schedule.innerHTML = ""
+    for(x in obj.schedule)
+    {
+        var row = document.createElement('tr')
+        var col1 = document.createElement('td')
+        var col2 = document.createElement('td')
+        col1.className = 'text-center'
+        col2.className = 'text-center'
+        col1.innerText = x
+        col2.innerText = obj.schedule[x]
+        row.appendChild(col1)
+        row.appendChild(col2)
+        schedule.appendChild(row)
+    }
+    exam_dates.innerHTML = ""
+    for(x in obj.exam_dates)
+    {
+        var row = document.createElement('tr')
+        var col1 = document.createElement('td')
+        var col2 = document.createElement('td')
+        col1.className = 'text-center'
+        col2.className = 'text-center'
+        switch(x)
+        {
+            case "midsem1":
+                col1.innerText = "Mid Semester Exam 1"
+                break;
+            case "midsem2":
+                col1.innerText = "Mid Semester Exam 2"
+                break;
+            case "endsem":
+                col1.innerText = "End Semester Exam"
+                break;
+        }
+        if(obj.exam_dates[x] == "null")
+        {
+            col2.innerText = "Dates Are Not Yet Announced"
+        }
+        else
+        {
+            col2.innerText = obj.exam_dates[x]
+        }
+        row.appendChild(col1)
+        row.appendChild(col2)
+        exam_dates.appendChild(row)
+    }
+    exam_marks.innerHTML = ""
+    for(x in obj.link_to_marks)
+    {
+        var row = document.createElement('tr')
+        var col1 = document.createElement('td')
+        var col2 = document.createElement('td')
+        col1.className = 'text-center'
+        col2.className = 'text-center'
+        switch(x)
+        {
+            case "midsem_1":
+                col1.innerText = "Mid Semester Exam 1"
+                break;
+            case "midsem_2":
+                col1.innerText = "Mid Semester Exam 2"
+                break;
+            case "endsem_3":
+                col1.innerText = "End Semester Exam"
+                break;
+        }
+        if(obj.link_to_marks[x] == "null" || obj.link_to_marks[x] == "")
+        {
+            col2.innerText = "Marks Not Yet Uploaded"
+        }
+        else
+        {
+            var ar = document.createElement('a')
+            switch(x)
+            {
+                case "midsem_1":
+                    ar.innerText = "Mid Semester Exam 1"
+                    break;
+                case "midsem_2":
+                    ar.innerText = "Mid Semester Exam 2"
+                    break;
+                case "endsem_3":
+                    ar.innerText = "End Semester Exam"
+                    break;
+            }
+            ar.href = obj.link_to_marks[x]
+            ar.className = 'btn btn-primary mx-2 my-2'
+            ar.target = "_blank"
+            col2.appendChild(ar)
+        }
+        row.appendChild(col1)
+        row.appendChild(col2)
+        exam_marks.appendChild(row)
     }
     $('#myModal').modal('show');
 }
